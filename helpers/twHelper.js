@@ -11,7 +11,7 @@ async function retreiveTweets(query, numberOfTweets) {
 	var nextToken = ''
 	var tweets = [], 
 			metadata = [];
-			
+
 	while(countTw < numberOfTweets){
 		var retreiveToken = (nextToken ? `&next_token=${nextToken}` : '')
 		var maxResults = '&max_results=' + Math.min(100, numberOfTweets - countTw)
@@ -25,8 +25,7 @@ async function retreiveTweets(query, numberOfTweets) {
 }
 
 function twResponseCallback(error, response, body) {
-	const responseData = JSON.parse(body)
-	return responseData
+	return JSON.parse(body)
 }
 
 // async function exampleCall(){

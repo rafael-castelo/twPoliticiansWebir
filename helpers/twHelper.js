@@ -24,10 +24,10 @@ async function retreiveTweets(query, numberOfTweets) {
 	return [tweets, metadata]
 }
 
-async function exampleCall(){
-	//Call function with a query and a number of results
-	var res = await retreiveTweets('frente amplio', 125)
-	console.log(res)
-}
+// async function exampleCall(){
+// 	//Call function with a query and a number of results
+// 	var res = await retreiveTweets('frente amplio', 125)
+// 	console.log(res)
+// }
 
-exampleCall()
+// exampleCall()

@@ -9,7 +9,9 @@ async function retreiveTweets(query, numberOfTweets) {
 
 	var countTw = 0
 	var nextToken = ''
-	var tweets = []
+	var tweets = [], 
+			metadata = [];
+			
 	while(countTw < numberOfTweets){
 		var retreiveToken = (nextToken ? `&next_token=${nextToken}` : '')
 		var maxResults = '&max_results=' + Math.min(100, numberOfTweets - countTw)
@@ -17,8 +19,9 @@ async function retreiveTweets(query, numberOfTweets) {
 		countTw += twRes.meta.result_count
 		nextToken = twRes.meta.next_token
 		tweets = tweets.concat(twRes.data)
+		metadata = metadata.concat(twRes.includes)
 	}
-	return tweets
+	return [tweets, metadata]
 }
 
 function twResponseCallback(error, response, body) {
@@ -27,7 +30,7 @@ function twResponseCallback(error, response, body) {
 }
 
 // async function exampleCall(){
-// Call function with a query and a number of results
+// 	//Call function with a query and a number of results
 // 	var res = await retreiveTweets('frente amplio', 125)
 // 	console.log(res)
 // }

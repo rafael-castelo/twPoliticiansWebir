@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 const { loadDB } = require("./services/loadDatabase.js");
-loadDB();
+loadDB("frente amplio");
 
 const tweetsRoutes = require("./api/v1/tweets");
 

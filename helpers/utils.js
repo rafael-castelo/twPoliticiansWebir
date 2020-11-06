@@ -4,7 +4,13 @@ module.exports = {
     promiseRequest: async function(req){
     return new Promise((resolve, reject) => {
             request.get(req, async function(error, response, body){
-                resolve(JSON.parse(body))
+                try {
+                    var res = JSON.parse(body)    
+                    resolve(res)
+                }catch(e) {
+                    reject(body)
+                }
+                
             })
         }) 
     }

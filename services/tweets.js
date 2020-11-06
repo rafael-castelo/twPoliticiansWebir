@@ -1,7 +1,6 @@
 const { retreiveTweets } = require('../helpers/twHelper')
 async function fetchTweets(query){
-	const tweets = await retreiveTweets(query, 100)
-	return tweets
+	return await retreiveTweets(query, 100)	 
 }
 
 module.exports = { fetchTweets }

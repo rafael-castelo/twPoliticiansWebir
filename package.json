@@ -9,11 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< Updated upstream
     "dotenv": "^8.2.0",
-=======
     "elasticsearch": "^16.7.1",
->>>>>>> Stashed changes
     "express": "^4.17.1",
     "request": "^2.88.2"
   }

@@ -4,7 +4,7 @@ const port = 3000;
 
 const { init } = require("./services/init");
 
-//init();
+init();
 
 const tweetsRoutes = require("./api/v1/tweets");
 const relevantTweetsRoutes = require("./api/v1/relevantTweets");

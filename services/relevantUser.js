@@ -1,4 +1,5 @@
 const { search, getUser } = require("../helpers/database.js");
+const { retreiveUser } = require("../helpers/twHelper");
 
 const relevantTweet = (tweets) => {
   if (tweets.length === 0) {
@@ -36,7 +37,7 @@ const relevantUser = async (politicalParty, topic) => {
 
   const relevantTweetIndex = relevantTweet(tweets);
   console.log("Tweet más relevante: ", tweets[relevantTweetIndex]);
-  const user = await getUser(tweets[relevantTweetIndex]._source.author_id);
+  const user = await retreiveUser(tweets[relevantTweetIndex]._source.author_id);//getUser(tweets[relevantTweetIndex]._source.author_id);
   return user;
 };
 

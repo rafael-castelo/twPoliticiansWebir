@@ -1,11 +1,11 @@
 const { TwBearerToken } = require("../config/config.js");
 const utils = require("./utils.js");
+const headers = {
+    Authorization: `Bearer ${TwBearerToken}`,
+  };
 
 const retreiveTweets = async(query, numberOfTweets) => {
   const endpoint = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=public_metrics&expansions=author_id`;
-  const headers = {
-    Authorization: `Bearer ${TwBearerToken}`,
-  };
 
   var countTw = 0;
   var nextToken = "";
@@ -28,7 +28,17 @@ const retreiveTweets = async(query, numberOfTweets) => {
   return [tweets, metadata];
 }
 
-module.exports = { retreiveTweets };
+const retreiveUser = async(userId) => {
+  const endpoint = `https://api.twitter.com/2/users/${userId}?user.fields=profile_image_url`;
+  var twUser = await utils.promiseRequest({
+      url: endpoint,
+      headers: headers,
+    });
+  return twUser.data
+
+}
+
+module.exports = { retreiveTweets, retreiveUser };
 
 // async function exampleCall() {
 //   //Call function with a query and a number of results

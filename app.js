@@ -4,14 +4,14 @@ const port = 3000;
 
 const { init } = require("./services/init");
 
-init();
+//init();
 
 const tweetsRoutes = require("./api/v1/tweets");
-const queryRoutes = require("./api/v1/query");
+const relevantTweetsRoutes = require("./api/v1/relevantTweets");
 const relevantUserRoutes = require("./api/v1/relevantUser");
 
 app.use("/api/v1/tweets", tweetsRoutes);
-app.use("/api/v1/query", queryRoutes);
+app.use("/api/v1/relevantTweets", relevantTweetsRoutes);
 app.use("/api/v1/relevantUser", relevantUserRoutes);
 
 app.listen(port, () => {

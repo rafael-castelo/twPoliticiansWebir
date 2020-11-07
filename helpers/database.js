@@ -1,6 +1,7 @@
 require("dotenv").config();
 const snakeCase = require("snake-case");
 const elastic = require("elasticsearch");
+const { use } = require("../api/v1/tweets");
 
 const elasticClient = elastic.Client({
   host: `${process.env.elasticSearchHost}:${process.env.elasticSearchPort}`,
@@ -66,7 +67,30 @@ const search = async (index, query) => {
   }
 };
 
+const getUser = async (id) => {
+  const elasticIndex = elastic.Client({
+    host: `${process.env.elasticSearchHost}:${process.env.elasticSearchPort}/users`,
+  });
+
+  try {
+    const user = await elasticIndex.search({
+      body: {
+        query: {
+          match: {
+            id: id,
+          },
+        },
+      },
+    });
+    console.log("Autor del tweet más relevante: ", user.hits.hits[0]._source);
+    return user.hits.hits[0]._source;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   save,
   search,
+  getUser,
 };

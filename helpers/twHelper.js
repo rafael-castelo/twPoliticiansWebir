@@ -1,7 +1,7 @@
 const { TwBearerToken } = require("../config/config.js");
 const utils = require("./utils.js");
 
-async function retreiveTweets(query, numberOfTweets) {
+const retreiveTweets = async(query, numberOfTweets) => {
   const endpoint = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=public_metrics&expansions=author_id`;
   const headers = {
     Authorization: `Bearer ${TwBearerToken}`,

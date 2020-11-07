@@ -27,8 +27,8 @@ const relevantTweet = (tweets) => {
   return max_index;
 };
 
-const relevantUser = async (political_party, topic) => {
-  const tweets = await search(political_party, topic);
+const relevantUser = async (politicalParty, topic) => {
+  const tweets = await search(politicalParty, topic);
 
   if (tweets.length === 0) {
     return { error: "No results" };

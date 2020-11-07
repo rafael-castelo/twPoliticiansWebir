@@ -3,9 +3,10 @@ const utils = require("./utils.js");
 const headers = {
     Authorization: `Bearer ${TwBearerToken}`,
   };
+const twBaseUrl = 'https://api.twitter.com/2'
 
 const retreiveTweets = async(query, numberOfTweets) => {
-  const endpoint = `https://api.twitter.com/2/tweets/search/recent?query=${query}&tweet.fields=public_metrics&expansions=author_id`;
+  const endpoint = `${twBaseUrl}/tweets/search/recent?query=${query}&tweet.fields=public_metrics&expansions=author_id`;
 
   var countTw = 0;
   var nextToken = "";
@@ -29,7 +30,7 @@ const retreiveTweets = async(query, numberOfTweets) => {
 }
 
 const retreiveUser = async(userId) => {
-  const endpoint = `https://api.twitter.com/2/users/${userId}?user.fields=profile_image_url`;
+  const endpoint = `${twBaseUrl}/users/${userId}?user.fields=profile_image_url`;
   var twUser = await utils.promiseRequest({
       url: endpoint,
       headers: headers,

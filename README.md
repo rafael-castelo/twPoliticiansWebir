@@ -17,6 +17,6 @@ http://localhost:3000/api/v1/relevantUser/poiticParty&topic
 
 Relevant tweets:
 
-http://localhost:3000/api/v1/query/poiticParty&topic
+http://localhost:3000/api/v1/relevantTweets/poiticParty&topic
 
 

@@ -38,13 +38,6 @@ const relevantUser = async (politicalParty, topic) => {
   const relevantTweetIndex = relevantTweet(tweets);
   const user = await retreiveUser(tweets[relevantTweetIndex]._source.author_id); //getUser(tweets[relevantTweetIndex]._source.author_id);
 
-  // Testing
-  console.log("\n");
-  console.log("Tweet más relevante: ", tweets[relevantTweetIndex]);
-  console.log("\n");
-  console.log("Usuario más relevante: ", user);
-  console.log("\n");
-
   return user;
 };
 

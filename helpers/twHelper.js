@@ -39,3 +39,12 @@ const retreiveUser = async (userId) => {
 };
 
 module.exports = { retreiveTweets, retreiveUser };
+
+// async function exampleCall() {
+//   //Call function with a query and a number of results
+//   var res = await retreiveTweets("frente amplio", 20);
+//   console.log(res[1][0].users);
+//   // console.log(res[0]);
+// }
+
+// exampleCall();

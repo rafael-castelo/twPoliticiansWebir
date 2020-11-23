@@ -40,6 +40,7 @@ const retreiveUser = async (userId) => {
 
 module.exports = { retreiveTweets, retreiveUser };
 
+// Testing
 // async function exampleCall() {
 //   //Call function with a query and a number of results
 //   var res = await retreiveTweets("frente amplio", 20);

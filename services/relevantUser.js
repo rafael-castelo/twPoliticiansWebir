@@ -6,21 +6,22 @@ const relevantTweet = (tweets) => {
     return 0;
   }
 
-  let max_metrics =
-    tweets[0]._source.like_count +
-    tweets[0]._source.quote_count +
-    tweets[0]._source.reply_count +
-    tweets[0]._source.retweet_count;
+  const weights = [0.2, 1, 0.6, 0.8]
+  let relevanceScore =
+    tweets[0]._source.like_count * weights[0] +
+    tweets[0]._source.quote_count * weights[1]+
+    tweets[0]._source.reply_count * weights[2]+
+    tweets[0]._source.retweet_count * weights[3];
   let max_index = 0;
 
   for (let i = 1; i < tweets.length; i++) {
     current_metrics =
-      tweets[i]._source.like_count +
-      tweets[i]._source.quote_count +
-      tweets[i]._source.reply_count +
-      tweets[i]._source.retweet_count;
+      tweets[i]._source.like_count * weights[0] +
+      tweets[i]._source.quote_count * weights[1] +
+      tweets[i]._source.reply_count * weights[2] +
+      tweets[i]._source.retweet_count * weights[3];
 
-    if (current_metrics > max_metrics) {
+    if (current_metrics > relevanceScore) {
       max_index = i;
     }
   }

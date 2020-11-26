@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const app = express();
 const port = 3000;
 
@@ -10,6 +11,7 @@ const tweetsRoutes = require("./api/v1/tweets");
 const relevantTweetsRoutes = require("./api/v1/relevantTweets");
 const relevantUserRoutes = require("./api/v1/relevantUser");
 
+app.use(cors())
 app.use("/api/v1/tweets", tweetsRoutes);
 app.use("/api/v1/relevantTweets", relevantTweetsRoutes);
 app.use("/api/v1/relevantUser", relevantUserRoutes);
